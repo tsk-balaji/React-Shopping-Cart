@@ -5,6 +5,7 @@ export default function ProductCard({
   handleAddToCart = () => {},
   isAddedToCart = false,
 }) {
+  //Render Ratings
   function renderRatings(rating = 0) {
     let ratingsNode = [];
     for (let i = 0; i < rating; i++) {

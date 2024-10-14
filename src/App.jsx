@@ -22,17 +22,24 @@ function App() {
 
   function handleAddToCart(data = {}) {
     let cartCopy = [...cart];
-    if (cartCopy.includes(data)) {
-      cartCopy.splice(cartCopy.indexOf(data), 1);
+
+    // Check if the item already exists in the cart
+    const itemIndex = cartCopy.findIndex(item => item.id === data.id);
+    
+    // If the item exists, remove it. If not, add it.
+    if (itemIndex !== -1) {
+      cartCopy.splice(itemIndex, 1);
     } else {
       cartCopy.push(data);
     }
+    
+    // Update the cart state
     setCart(cartCopy);
   }
 
   return (
     <div>
-      <NavBar quantity={cart.length} />
+      <NavBar cart={cart} quantity={cart.length} />
       <Billboard />
       <ProductsContainer
         products={products}

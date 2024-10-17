@@ -1,5 +1,5 @@
 > # TSK Shopping Cart
-hi
+
 This is Shopping Cart Application made using React JS.
 
 &nbsp;

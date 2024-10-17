@@ -9,7 +9,7 @@ function App() {
   const [cart, setCart] = useState([]);
 
   useLayoutEffect(() => {
-    fetch("http://localhost:5173/products.json")
+    fetch("/products.json")
       .then((response) => response.json())
       .then((result) => {
         if (result.data.length > 0) {
@@ -24,15 +24,15 @@ function App() {
     let cartCopy = [...cart];
 
     // Check if the item already exists in the cart
-    const itemIndex = cartCopy.findIndex(item => item.id === data.id);
-    
+    const itemIndex = cartCopy.findIndex((item) => item.id === data.id);
+
     // If the item exists, remove it. If not, add it.
     if (itemIndex !== -1) {
       cartCopy.splice(itemIndex, 1);
     } else {
       cartCopy.push(data);
     }
-    
+
     // Update the cart state
     setCart(cartCopy);
   }
